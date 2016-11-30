@@ -54,12 +54,21 @@
         $hora = substr($dataHora[1], 0,-3);
         $agendado = $data[2]."-".$data[1]."-".$data[0]." ".$hora;
 
-       $dateNow = date_create(date("Y-m-d H:i:s")); 
-       $dateAgendado = date_create($r['hora_agendada']); 
-       if ($dateNow > $dateAgendado) {
+        $datetime1 = strtotime($r['hora_agendada']); 
+        $datetime2 = strtotime("now"); 
+        $interval = $datetime2 - $datetime1; 
+        $minutes = round($interval / 60); 
+
+
+       //$dateNow = date_create(date("Y-m-d H:i:s")); 
+       //$dateAgendado = date_create($r['hora_agendada']);
+
+       if ($minutes < -5) {
+          $horaLabel = "<span class='pull-right badge bg-green'>".$agendado."</span>";
+       }elseif($minutes > 5){
           $horaLabel = "<span class='pull-right badge bg-red'>".$agendado."</span>";
        }else{
-          $horaLabel = "<span class='pull-right badge bg-green'>".$agendado."</span>";
+          $horaLabel = "<span class='pull-right badge bg-yellow'>".$agendado."</span>";
        }
 
         echo "<tr>";
@@ -222,12 +231,21 @@
         $hora = substr($dataHora[1], 0,-3);
         $agendado = $data[2]."-".$data[1]."-".$data[0]." ".$hora;
 
-       $dateNow = date_create(date("Y-m-d H:i:s")); 
-       $dateAgendado = date_create($r['hora_agendada']); 
-       if ($dateNow > $dateAgendado) {
+       $datetime1 = strtotime($r['hora_agendada']); 
+        $datetime2 = strtotime("now"); 
+        $interval = $datetime2 - $datetime1; 
+        $minutes = round($interval / 60); 
+
+
+       //$dateNow = date_create(date("Y-m-d H:i:s")); 
+       //$dateAgendado = date_create($r['hora_agendada']);
+
+       if ($minutes < -5) {
+          $horaLabel = "<span class='pull-right badge bg-green'>".$agendado."</span>";
+       }elseif($minutes > 5){
           $horaLabel = "<span class='pull-right badge bg-red'>".$agendado."</span>";
        }else{
-          $horaLabel = "<span class='pull-right badge bg-green'>".$agendado."</span>";
+          $horaLabel = "<span class='pull-right badge bg-yellow'>".$agendado."</span>";
        }
 
         echo "<tr>";
@@ -308,12 +326,21 @@
         $hora = substr($dataHora[1], 0,-3);
         $agendado = $data[2]."-".$data[1]."-".$data[0]." ".$hora;
 
-       $dateNow = date_create(date("Y-m-d H:i:s")); 
-       $dateAgendado = date_create($r['hora_agendada']); 
-       if ($dateNow > $dateAgendado) {
+       $datetime1 = strtotime($r['hora_agendada']); 
+        $datetime2 = strtotime("now"); 
+        $interval = $datetime2 - $datetime1; 
+        $minutes = round($interval / 60); 
+
+
+       //$dateNow = date_create(date("Y-m-d H:i:s")); 
+       //$dateAgendado = date_create($r['hora_agendada']);
+
+       if ($minutes < -5) {
+          $horaLabel = "<span class='pull-right badge bg-green'>".$agendado."</span>";
+       }elseif($minutes > 5){
           $horaLabel = "<span class='pull-right badge bg-red'>".$agendado."</span>";
        }else{
-          $horaLabel = "<span class='pull-right badge bg-green'>".$agendado."</span>";
+          $horaLabel = "<span class='pull-right badge bg-yellow'>".$agendado."</span>";
        }
 
         echo "<tr>";
@@ -394,12 +421,21 @@
         $hora = substr($dataHora[1], 0,-3);
         $agendado = $data[2]."-".$data[1]."-".$data[0]." ".$hora;
 
-       $dateNow = date_create(date("Y-m-d H:i:s")); 
-       $dateAgendado = date_create($r['hora_agendada']); 
-       if ($dateNow > $dateAgendado) {
+       $datetime1 = strtotime($r['hora_agendada']); 
+        $datetime2 = strtotime("now"); 
+        $interval = $datetime2 - $datetime1; 
+        $minutes = round($interval / 60); 
+
+
+       //$dateNow = date_create(date("Y-m-d H:i:s")); 
+       //$dateAgendado = date_create($r['hora_agendada']);
+
+       if ($minutes < -5) {
+          $horaLabel = "<span class='pull-right badge bg-green'>".$agendado."</span>";
+       }elseif($minutes > 5){
           $horaLabel = "<span class='pull-right badge bg-red'>".$agendado."</span>";
        }else{
-          $horaLabel = "<span class='pull-right badge bg-green'>".$agendado."</span>";
+          $horaLabel = "<span class='pull-right badge bg-yellow'>".$agendado."</span>";
        }
 
         echo "<tr>";
@@ -479,12 +515,21 @@
         $hora = substr($dataHora[1], 0,-3);
         $agendado = $data[2]."-".$data[1]."-".$data[0]." ".$hora;
 
-       $dateNow = date_create(date("Y-m-d H:i:s")); 
-       $dateAgendado = date_create($r['hora_agendada']); 
-       if ($dateNow > $dateAgendado) {
+       $datetime1 = strtotime($r['hora_agendada']); 
+        $datetime2 = strtotime("now"); 
+        $interval = $datetime2 - $datetime1; 
+        $minutes = round($interval / 60); 
+
+
+       //$dateNow = date_create(date("Y-m-d H:i:s")); 
+       //$dateAgendado = date_create($r['hora_agendada']);
+
+       if ($minutes < -5) {
+          $horaLabel = "<span class='pull-right badge bg-green'>".$agendado."</span>";
+       }elseif($minutes > 5){
           $horaLabel = "<span class='pull-right badge bg-red'>".$agendado."</span>";
        }else{
-          $horaLabel = "<span class='pull-right badge bg-green'>".$agendado."</span>";
+          $horaLabel = "<span class='pull-right badge bg-yellow'>".$agendado."</span>";
        }
 
         echo "<tr>";
@@ -565,12 +610,21 @@
         $hora = substr($dataHora[1], 0,-3);
         $agendado = $data[2]."-".$data[1]."-".$data[0]." ".$hora;
 
-       $dateNow = date_create(date("Y-m-d H:i:s")); 
-       $dateAgendado = date_create($r['hora_agendada']); 
-       if ($dateNow > $dateAgendado) {
+       $datetime1 = strtotime($r['hora_agendada']); 
+        $datetime2 = strtotime("now"); 
+        $interval = $datetime2 - $datetime1; 
+        $minutes = round($interval / 60); 
+
+
+       //$dateNow = date_create(date("Y-m-d H:i:s")); 
+       //$dateAgendado = date_create($r['hora_agendada']);
+
+       if ($minutes < -5) {
+          $horaLabel = "<span class='pull-right badge bg-green'>".$agendado."</span>";
+       }elseif($minutes > 5){
           $horaLabel = "<span class='pull-right badge bg-red'>".$agendado."</span>";
        }else{
-          $horaLabel = "<span class='pull-right badge bg-green'>".$agendado."</span>";
+          $horaLabel = "<span class='pull-right badge bg-yellow'>".$agendado."</span>";
        }
 
         echo "<tr>";

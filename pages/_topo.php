@@ -77,10 +77,9 @@
                   <?php 
                     if ($_SESSION['tipo'] == 'admin') {
                     echo '
-                    <li><a href="novaMensagem.php">Cadastrar Mensagem</a></li>
-                    <li><a href="novaCidade.php">Cadastrar Cidade</a></li>
-                    <li><a href="novoLabels.php">Cadastrar Labels</a></li>
+                    <li><a href="emAtendimento.php">Em atendimento</a></li>
                     <li class="divider"></li>
+                    <li><a href="novaMensagem.php">Cadastrar Mensagem</a></li>
                     <li><a href="novoUsuario.php">Cadastrar Usuário</a></li>';
                     }
                     echo '<li class="divider"></li>
