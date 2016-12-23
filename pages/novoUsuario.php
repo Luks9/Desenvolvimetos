@@ -44,7 +44,7 @@ if ($_SESSION['tipo'] == 'admin') {
                           <input type="text" class="form-control" autofocus placeholder="Senha" name="senha" id="senha" value="'.$senha.'" required="">
                           <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>                        
-                        <label>Nome do Usuário</label>
+                        <label>Usuário</label>
                         <div class="form-group has-feedback">
                           <input type="text" class="form-control" autofocus placeholder="Usuário" name="usuario" id="usuario" value="'.$usuario.'" required="">
                           <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -52,7 +52,7 @@ if ($_SESSION['tipo'] == 'admin') {
                         <label>Ramal</label>
                         <div class="form-group has-feedback">
                           <input type="text" class="form-control" name="ramal" id="ramal" value="'.$ramal.'" required="">
-                          <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                          <span class="glyphicon glyphicon-phone form-control-feedback"></span>
                         </div>
                       </div><!-- /.col-md-6 -->
                       <div class="col-md-6">
@@ -61,7 +61,6 @@ if ($_SESSION['tipo'] == 'admin') {
                            <select class="form-control select2" name="setor" id="setor" value="'.$setor.'" required="" style="width: 100%;">
                          <option selected="selected">'.$setor.'</option>
                           <option selected="selected">Setor</option>
-                          <option value="Redes">Redes</option>
                           <option value="Suporte">Suporte</option>
                           <option value="Suporte">Suporte 2</option>
                           <option value="Comercial">Comercial</option>  
@@ -110,7 +109,7 @@ if ($_SESSION['tipo'] == 'admin') {
                         <label>Ramal</label>
                         <div class="form-group has-feedback">
                           <input type="text" class="form-control" maxlength="4" placeholder="Ramal" name="ramal" id="ramal" required="">
-                          <span class="glyphicon glyphicon-user form-control-feedback"></span>
+                          <span class="glyphicon glyphicon-phone form-control-feedback"></span>
                         </div>
                       </div><!-- /.col-md-6 -->
                       <div class="col-md-6">
@@ -118,7 +117,6 @@ if ($_SESSION['tipo'] == 'admin') {
                         <div class="form-group has-feedback">
                            <select class="form-control select2" name="setor" id="setor" required="" style="width: 100%;">
                          <option selected="selected">Setor</option>
-                          <option value="Redes">Redes</option>
                           <option value="Suporte">Suporte</option>
                           <option value="Suporte">Suporte 2</option>
                           <option value="Comercial">Comercial</option>  
@@ -259,7 +257,7 @@ jQuery(document).ready(function () {
               sticky: false,
               time: '2000',
             });
-            window.setTimeout("location.href='/agendamento/pages/novoUsuario.php'",1000);
+            window.setTimeout("location.href='./novoUsuario.php'",1000);
           } else if(data == false) {
             jQuery.gritter.add({
               title: 'Usuário já Cadastrado',
@@ -269,7 +267,7 @@ jQuery(document).ready(function () {
               sticky: false,
               time: '2000',
             });
-            window.setTimeout("location.href='/agendamento/pages/novoUsuario.php'",1000);
+            window.setTimeout("location.href='./novoUsuario.php'",1000);
           }
         }
       });

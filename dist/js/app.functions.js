@@ -6,7 +6,7 @@ jQuery(document).ready(function () {
 			var dados = $( form ).serialize();
 			$.ajax({
 				type: "POST",
-				url: "/agendamento/php/confirmarUsuarioLogado.php",
+				url: "php/confirmarUsuarioLogado.php",
 				data: dados,
 				success: function( data ) {
 					if (data == true) {
@@ -18,7 +18,7 @@ jQuery(document).ready(function () {
 							sticky: false,
 							time: '2000',
 						});
-						window.setTimeout("location.href='/agendamento/pages/index.php'",1000);
+						window.setTimeout("location.href='pages/index.php'",1000);
 					}else if(data == false) {
 						jQuery.gritter.add({
 							title: 'Usuário ou Senha Incorretos',
@@ -28,7 +28,7 @@ jQuery(document).ready(function () {
 							sticky: false,
 							time: '2000',
 						});
-						window.setTimeout("location.href='/agendamento/'",1000);
+						window.setTimeout("location.href='/'",1000);
 					}
 				}
 			});

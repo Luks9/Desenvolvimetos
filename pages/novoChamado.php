@@ -45,7 +45,7 @@ include ('../php/funcoes.php');
                         </select>
                         </div>
                         <div class="form-group has-feedback">
-                          <input type="hidden" class="form-control" id="origem" name="origem" value=<?php echo $usuarioLogado; ?> >
+                          <input type="hidden" class="form-control" id="origem" name="origem" value=<?php echo $nomeUsuario; ?> >
                         </div>
                         <label>Setor</label>
                         <div class="form-group has-feedback">
@@ -173,7 +173,7 @@ jQuery(document).ready(function () {
       var dados = $( form ).serialize();
       $.ajax({
         type: "POST",
-        url: "/agendamento/php/salvarChamado.php",
+        url: "../php/salvarChamado.php",
         data: dados,
         success: function( data ) {
           console.log(dados);
@@ -186,7 +186,7 @@ jQuery(document).ready(function () {
               sticky: false,
               time: '2000',
             });
-            window.setTimeout("location.href='/agendamento/pages/index.php'",1000);
+            window.setTimeout("location.href='./novoChamado.php'",1000);
           }else if(data == false) {
             jQuery.gritter.add({
               title: 'Erro no Formulario',
@@ -196,7 +196,7 @@ jQuery(document).ready(function () {
               sticky: false,
               time: '2000',
             });
-            window.setTimeout("location.href='/agendamento/pages/index.php'",1000);
+            window.setTimeout("location.href='./novoChamado.php'",1000);
           }
           else {
             console.log(data);
@@ -208,7 +208,7 @@ jQuery(document).ready(function () {
               sticky: false,
               time: '2000',
             });
-            window.setTimeout("location.href='/agendamento/pages/index.php'",1000);
+            window.setTimeout("location.href='./novoChamado.php'",1000);
           }
         }
       });

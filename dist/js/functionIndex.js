@@ -67,7 +67,7 @@ $('#form_geral').submit(function() {
           sticky: false,
           time: '2000',
         });
-        window.setTimeout("location.href='/agendamento/pages/index.php'",2000); 
+        window.setTimeout("location.href='./index.php'",2000); 
       }else if(data == true) {
         jQuery.gritter.add({
           title: 'Esse atendimento não esta atribuido a você.',
@@ -75,9 +75,9 @@ $('#form_geral').submit(function() {
           class_name: 'growl-warning',
           image: '../dist/img/shield-warning-icon.png',
           sticky: false,
-          time: '3000',
+          time: '2000',
         });
-        window.setTimeout("location.href='/agendamento/pages/index.php'",2000);
+        window.setTimeout("location.href='./index.php'",2000);
       }
     }
   });
@@ -88,6 +88,9 @@ $('#form_geral').submit(function() {
     tel = $("#numeros").val().replace(/[^0-9]/g,'');
     id = $("#id").val();
     $("#status").val("Em atendimento");
+    var usuario = $("#user").val();
+    $('#usuario')
+      .append('<option selected value="'+usuario+'">'+usuario+'</option>');
 
     $.getJSON('solicitacoes.ajax.php?search=',{
         cod: 'ligar',
@@ -109,7 +112,7 @@ $('#form_geral').submit(function() {
             sticky: false,
             time: '4000',
           });
-          window.setTimeout("location.href='/agendamento/pages/index.php'",3000);
+          window.setTimeout("location.href='./index.php'",3000);
         }
       });
 
@@ -131,7 +134,7 @@ $('#form_geral').submit(function() {
             sticky: false,
             time: '2000',
           });
-          window.setTimeout("location.href='/agendamento/pages/index.php'",2000);
+          window.setTimeout("location.href='./index.php'",2000);
           }else if(retorno == '2'){
             jQuery.gritter.add({
               title: 'Esse atendimento não esta atribuido a você.',
@@ -175,3 +178,50 @@ $('#form_geral').submit(function() {
       .append('<option value="'+tel+'">'+tel+'</option>')
       .append('<option value="'+tel2+'">'+tel2+'</option>')
   }
+
+  function enviarSMS(tel, tel2){
+    $('#msg')
+        .find('option')
+        .remove()
+        .end();
+    $('#enviar_sms').on('hidden.bs.modal', function () {
+        $(this).find("input,textarea,select").val('').end();
+      });
+    $('#ver_msg').val('');
+    $('#tel_sms')
+        .find('option')
+        .remove()
+        .end();
+   $.getJSON('solicitacoes.ajax.php?search=',{
+        cod: 'msg'}, 
+      function(x){
+        console.log(x);
+        $('#msg').append('<option selected disabled>Mensagens</option>');
+        for(var i = 0; i < x.length; i++){
+          $('#msg').append('<option value="'+x[i].id+'">'+x[i].titulo+'</option>');
+        }
+        $('#msg').change(function(){
+          var id = $('#msg').val();
+          for(var i = 0; i < x.length; i++){
+            if (x[i].id == id) {
+              $('#ver_msg').val('');
+              $('#ver_msg').val(x[i].mensagem);
+            }
+          }
+        });
+      });
+    $('#tel_sms')
+      .append('<option value="'+tel+'">'+tel+'</option>')
+      .append('<option value="'+tel2+'">'+tel2+'</option>');
+  }
+
+  $(function(){
+    linhas = new Array();
+        for(var j=0;j<7;j++){
+          linhas[j] = $("#agendado"+j+" tr").length-1;
+          $('#number'+j).attr('data-original-title', 'Agendamentos');
+          $('#number'+j).text(linhas[j]); 
+        }
+
+        //$('#number0').text('21');
+  })

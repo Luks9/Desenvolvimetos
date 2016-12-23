@@ -5,5 +5,5 @@
 	$_SESSION = array();
 	session_destroy();
 	// Redireciona para a index inicial
-	header('location: ./ ');
+	header('location: /agendamento ');
 ?>

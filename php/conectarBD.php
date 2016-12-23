@@ -29,4 +29,6 @@
 		// Mata o script
 		die();
 	}
-?>
+?> 
+
+

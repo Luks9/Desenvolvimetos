@@ -19,7 +19,7 @@ jQuery(document).ready(function () {
 		})
 		$.ajax({
 			type: "POST",
-			url: "/agendamento/php/uploadPicture.php",
+			url: "/lucas/agendamento/php/uploadPicture.php",
 			processData: false,
 			contentType: false,
 			data: dados,

@@ -8,7 +8,19 @@
     $dataCadastro = $_SESSION['datacadastro'];
     $email        = $_SESSION['email'];
     $foto        = $_SESSION['foto'];
-    // Chamando o arquivo para realizar o lockscreen
+
+    if ($setorUsuario == 'Comercial') {
+      $URL = 'http://webservices.twwwireless.com.br/reluzcapwcf/reluzcap.svc/EnviaSMS/brisa123/VF00400095';
+    }elseif ($setorUsuario == 'Recepção') {
+      $URL = 'http://webservices.twwwireless.com.br/reluzcapwcf/reluzcap.svc/EnviaSMS/brisa123/VF00400096';
+    }elseif ($setorUsuario == 'Cobrança') {
+      $URL = 'http://webservices.twwwireless.com.br/reluzcapwcf/reluzcap.svc/EnviaSMS/brisa123/VF00400097';
+    }elseif ($setorUsuario == 'Suporte' || $setor == 'Suporte 2') {
+      $URL = 'http://webservices.twwwireless.com.br/reluzcapwcf/reluzcap.svc/EnviaSMS/brisa123/VF00400098';
+    }else{
+      $URL = 'http://webservices.twwwireless.com.br/reluzcapwcf/reluzcap.svc/EnviaSMS/brisa123/VF00400089';
+    }
+    // final 5 comercial, 6 recepção, 7 Cobrança e 8 suporte.
     //include ('_validarSession.php');
 
 ?>
@@ -27,7 +39,7 @@
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
 
    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="../dist/css/ionicons-2.0.1/css/ionicons.min.css">
 
@@ -71,6 +83,7 @@
               <ul class="nav navbar-nav">
                 <li><a href="index.php">Painel <span class="sr-only">(current)</span></a></li>
                 <li><a href="novoChamado.php">Cadastrar Retorno</a></li>
+                <li><a href="sms.php">SMS</a></li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Opções Avançadas <span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">

@@ -36,11 +36,9 @@ if (
 		$_SESSION['logado'] = true;
 		$success = $_SESSION['logado'];
 		echo $success;
-		$_SESSION["timeSession"]  = time() + 20;
 		$_SESSION['nome_usuario'] = $fetch_usuario['nome'];
 		$_SESSION['usuario']      = $fetch_usuario['usuario'];
 		$_SESSION['user_id']      = $fetch_usuario['id'];
-		$_SESSION["sessiontime"] = time() + 1920;
 		$_SESSION['setor']        = $fetch_usuario['setor'];
 		$_SESSION['ramal']        = $fetch_usuario['ramal'];
 		$_SESSION['foto']        = $fetch_usuario['foto'];

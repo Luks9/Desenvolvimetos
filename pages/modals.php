@@ -78,10 +78,9 @@
 					</div><!-- /.box -->
 				</div>
 				<div class="modal-footer">
-					
-					<button type="button" id="finalizar" class="btn btn-success">Finalizar</button>
 					<button type="submit" class="btn btn-primary">Salvar</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button type="button" id="finalizar" class="btn btn-success">Finalizar</button>
 				</div>
 			</div>
 		</form>
@@ -166,4 +165,48 @@
 			</div>
 		</form>
 	</div>
+</div>
+
+<div class="modal fade" id="md_sms" role="dialog">
+  <div class="modal-dialog">
+    <form method="POST" id="enviar_sms">
+      <div class="box box-primary">
+        <div class="modal-content">
+          <div class="box-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h3 class="box-title">Enviar SMS</h3>
+          </div>
+          <div class="modal-body">
+            <div class="box-body">
+                <div class="col-md-12">
+	                <div class="form-group has-feedback">
+	                	<label>Selecione um numero:</label>
+						<select class="form-control" name="tel_sms" id="tel_sms">
+						</select>
+	              	</div>
+              	<div class="col-md-5">
+              		<div class="form-group has-feedback">
+	                	<label>Selecione uma mensagem:</label>
+						<select class="form-control" id="msg" name="msg" required="">
+							<option selected="" disabled="">Selecione uma Mensagem</option>
+						</select>
+	              	</div>
+              	</div>
+              		<div class="col-md-7">
+              			<div class="form-group has-feedback">
+							<label>Mensagem:</label>
+							<textarea id="ver_msg" name="ver_msg" readonly="" class="form-control" rows="4"></textarea>
+						</div>
+                	</div>
+                </div>
+            </div><!-- /.box-body -->
+          </div><!-- /.box -->
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Enviar</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>

@@ -23,6 +23,7 @@
         echo "<td>" . $r['cidade'] . "</td>";
         echo "<td>" . $r['usuario'] . "</td>";
         echo "<td>" . $tempo . "</td>";
+        echo "<td>" . $r['setor'] . "</td>";
         echo "<td>" . $r['status'] . "</td>";
         echo "<td><button class='btn btn-danger glyphicon glyphicon-headphones' data-toggle='modal'  
         data-target='#finalizado' onclick='finalizado(\"" . $r['id'] . "\", 

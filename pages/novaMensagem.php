@@ -1,6 +1,6 @@
 <?php
 include ('_topo.php');
-include ('../php/funcoes.php');
+include ('../php/funcoesGerais.php');
 if ($_SESSION['tipo'] == 'admin') {
 ?>
 
@@ -25,8 +25,8 @@ if ($_SESSION['tipo'] == 'admin') {
                           <input type="text" class="form-control" autofocus placeholder="Titulo da Mensagem" name="t_mensagem" id="t_mensagem" required="">
                           <span class="glyphicon glyphicon-user form-control-feedback"></span>
                         </div>
-                        <label>Status</label>
-                        <div class="form-group has-feedback">
+                        <!-- <label>Status</label>
+                       <div class="form-group has-feedback">
                           <select class="form-control select2" name="status" id="status" required="" style="width: 100%;">
                           <option value="Aguardando retorno">Aguardando Retorno</option>
                           <option value="Agendado">Agendado</option>  
@@ -35,15 +35,45 @@ if ($_SESSION['tipo'] == 'admin') {
                           <option value="Em atendimento">Em atendimento</option>
                           <option value="Outro">Outro</option>
                         </select>
-                        </div>
+                        </div>-->
                         <div class="form-group">
                           <label>Mensagem</label>
-                          <textarea class="form-control" id="mensagem" required="" maxlength="160" name="mensagem" rows="3" placeholder="Enter ..."></textarea>
-                          Restam <span id="contador_char"></span> caracteres a serem digitados.
+                          <textarea class="form-control" id="mensagem" required="" maxlength="140" name="mensagem" rows="3" placeholder="Enter ..."></textarea>
+                          Restam<b> <span id="contador_char"></span></b> caracteres a serem digitados.
                         </div>
                       </div><!-- /.col-md-6 -->
                       <div class="col-md-6">
-                        <!-- Observação -->
+                    <div class="box-body no-padding">
+                      <table id="msg" class="table table-bordered table-striped">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Setor</th>
+                            <th>Info</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php  
+                            require ('../php/conectarBD.php');
+                            $stmt = $conexao_pdo->prepare("SELECT * FROM mensagens order by id");
+                            $stmt->execute();
+                            $result = array();
+                            while($r = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                              $result[] = $r;
+
+                              echo "<tr>";
+                              echo "<td>".$r['id']."</td>";
+                              echo "<td>".$r['titulo']."</td>";
+                              echo "<td>".$r['setor']."</td>";
+                              echo "<td data-toggle='modal' data-target='#UpdateMSG'><a href='#' <i class='fa fa-commenting' id='editar' onclick='myFunction(\"".$r['id']."\", \"".$r['mensagem']."\")'></i></a></td>";
+                              echo "</tr>"; 
+                        
+                            }
+                             ?>    
+                        </tbody>
+                      </table>
+                    </div>
                       </div>
                     </div><!-- /.row -->
                   </div><!-- /.box-body -->
@@ -138,7 +168,7 @@ jQuery(document).ready(function () {
               sticky: false,
               time: '2000',
             });
-            window.setTimeout("location.href='/agendamento/pages/index.php'",1000);
+            window.setTimeout("location.href='./novaMensagem.php'",1000);
           }else if(data == false) {
             jQuery.gritter.add({
               title: 'Erro no Formulario',
@@ -148,19 +178,7 @@ jQuery(document).ready(function () {
               sticky: false,
               time: '2000',
             });
-            window.setTimeout("location.href='/agendamento/pages/novaMensagem.php'",1000);
-          }
-          else {
-            console.log(data);
-            jQuery.gritter.add({
-              title: 'Cliente já Cadastrado',
-              text: 'Erro !',
-              class_name: 'growl-warning',
-              image: '../dist/img/shield-warning-icon.png',
-              sticky: false,
-              time: '2000',
-            });
-            window.setTimeout("location.href='/agendamento/pages/novaMensagem.php'",1000);
+            window.setTimeout("location.href='./novaMensagem.php'",1000);
           }
         }
       });
@@ -175,6 +193,29 @@ $(document).on("input", "#mensagem", function () {
 
     $("#contador_char").text(caracteresRestantes);
 });
+
+$(document).on("input", "#msg_edit", function () {
+    var limite = 160;
+    var caracteresDigitados = $(this).val().length;
+    var caracteresRestantes = limite - caracteresDigitados;
+
+    $("#contador_char_edit").text(caracteresRestantes);
+});
+
+$('#msg').DataTable({
+  "paging": true,
+  "lengthChange": false,
+  "searching": false,
+  "info": true
+});
+function myFunction(id, msg){
+  $('#form_edit').on('hidden.bs.modal', function () {
+    $(this).find("input,textarea,select").val('').end();
+  });
+  $("#msg_edit").val(msg);
+  $("#id_2").val(id);
+}
+
 </script>
   </body>
 </html>
@@ -190,3 +231,76 @@ else {
 }
 
 ?>
+
+<div class="modal fade" id="UpdateMSG" role="dialog">
+  <div class="modal-dialog">
+    <form method="POST" id="form_edit">
+      <div class="box box-primary">
+        <div class="modal-content">
+          <div class="box-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h3 class="box-title">Informações da Mensagem</h3>
+          </div>
+          <div class="modal-body">
+            <div class="box-body">
+                <input type="hidden" name="id" id="id_2">
+                <input type="hidden" name="user" id="user_2" value="<?=$nomeUsuario; ?>">
+                <div class="col-md-12">
+                <div class="form-group has-feedback">
+                    <label>Mensagem:</label>
+                    <textarea id="msg_edit" name="msg_edit" class="form-control" rows="3" cols="10" maxlength="140"></textarea>
+                    Restam<b> <span id="contador_char_edit"></span></b> caracteres a serem digitados.
+                  </div>
+                </div>
+            </div><!-- /.box-body -->
+          </div><!-- /.box -->
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Editar</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script type="text/javascript">
+  jQuery(document).ready(function () {
+  //Script para logar via ajax
+  $('#form_edit').validate({
+    submitHandler: function( form ){
+      var dados = $( form ).serialize();
+      $.ajax({
+        type: "POST",
+        url: "/agendamento/php/editar_msg.php",
+        data: dados,
+        success: function( data ) {
+          console.log(dados);
+          if (data == false) {
+            jQuery.gritter.add({
+              title: 'Salvo com Sucesso !',
+              text: 'Aguarde...',
+              class_name: 'growl-success',
+              image: '../dist/img/shield-ok-icon.png',
+              sticky: false,
+              time: '2000',
+            });
+            window.setTimeout("location.href='./novaMensagem.php'",1000);
+          }else if(data == true) {
+            jQuery.gritter.add({
+              title: 'Erro no Formulario',
+              text: 'Erro!',
+              class_name: 'growl-danger',
+              image: '../dist/img/shield-error-icon.png',
+              sticky: false,
+              time: '2000',
+            });
+            window.setTimeout("location.href='./novaMensagem.php'",1000);
+          }
+        }
+      });
+      return false;
+    }
+  });
+});
+</script>

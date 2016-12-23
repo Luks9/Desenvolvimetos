@@ -5,7 +5,7 @@
 	$stmt->bindParam(':name', $usuario, PDO::PARAM_STR);
 	$stmt->execute();
 	$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-	$image = '../php/Fotos/' . "" . implode("", $result[0]) . "";
+	$image = '/agendamento/php/Fotos/' . "" . implode("", $result[0]) . "";
 ?>
 
 

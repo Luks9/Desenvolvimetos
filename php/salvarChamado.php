@@ -19,7 +19,7 @@
                         }
                         
                         $pdo_insere = $conexao_pdo->prepare('INSERT INTO retornos (cliente, tel, tel2, cidade, origem, setor, observacao, data, status, hora_agendada) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
-                        $pdo_insere->execute( array($cliente, $tel, $tel2, $cidade, $origem, $setor, $obs2, $data_abertura_chamado, $status, $agendado) );
+                        $pdo_insere->execute( array($cliente, $tel, $tel2, $cidade, 'Painel', $setor, $obs2, $data_abertura_chamado, $status, $agendado) );
                         echo true;
                    
                 }

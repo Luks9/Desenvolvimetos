@@ -6,7 +6,7 @@ $lembrete = (isset($_COOKIE['CookieLembrete'])) ? base64_decode($_COOKIE['Cookie
 $checked = ($lembrete == 'SIM') ? 'checked' : '';
  
 ?>
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
     <meta charset="utf-8">
@@ -17,9 +17,9 @@ $checked = ($lembrete == 'SIM') ? 'checked' : '';
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="resources/plugins/ionicons-2.0.1/css/ionicons.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
     <!-- iCheck -->
@@ -102,11 +102,11 @@ $checked = ($lembrete == 'SIM') ? 'checked' : '';
             <input type="password" id="senha" name="senha" class="form-control" placeholder="Senha">
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
-          <div class="checkbox">
+         <!-- <div class="checkbox">
           <label>
             <input type="checkbox" name="lembrete" value="SIM" <?=$checked?>> Lembre-me
           </label>
-          </div>
+          </div>-->
           <div class="row">
             <div class="col-xs-8">
             </div><!-- /.col -->
@@ -115,9 +115,6 @@ $checked = ($lembrete == 'SIM') ? 'checked' : '';
             </div><!-- /.col -->
           </div>
         </form>
-
-        
-
 
 </div>
 

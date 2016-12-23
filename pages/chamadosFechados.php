@@ -31,6 +31,7 @@ include ('modals.php');
                       <th>Cidade</th>
                       <th>Usuário</th>
                       <th>Tempo Atendimento</th>
+                      <th>Setor</th>
                       <th>Status</th>
                       <th>Ações</th>
                     </tr>
@@ -99,15 +100,7 @@ $(function () {
 
     <script>
       $(function () {
-        $('#example1').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": true,
-          "ordering": false,
-          "info": true,
-          "autoWidth": true,
-
-        });
+        $('#example1').DataTable();
        $("#mac").inputmask("##:##:##:##:##:##");
         $(".my-colorpicker2").colorpicker();
       });
