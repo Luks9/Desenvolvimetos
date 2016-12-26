@@ -30,6 +30,7 @@ include ('modals.php');
                     <li><a href="#tab_4" data-toggle="tab">Comercial</a></li>
                     <li><a href="#tab_5" data-toggle="tab">Cobrança</a></li>
                     <li><a href="#tab_6" data-toggle="tab">Ouvidoria</a></li>
+                    <li><a href="#tab_7" data-toggle="tab">Fale Conosco</a></li>
                   </ul>
                   <div class="tab-content">
                     <div class="tab-pane active" id="tab_0">
@@ -408,6 +409,60 @@ include ('modals.php');
                       </div>
                     </div>
 
+                    <div class="tab-pane" id="tab_7">
+                      <table id="example7" class="table table-bordered table-striped">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Cliente</th>
+                            <th>Telefone</th>
+                            <th>Origem</th>
+                            <th>Cidade</th>
+                            <th>Usuário</th>
+                            <th>Data</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php  faleConosco();   ?>    
+                        </tbody>
+                      </table>
+                      <div class="box box-warning box-solid collapsed-box">
+                        <div class="box-header with-border">
+                          <h3 class="box-title">Agendados</h3>
+                          <div class="box-tools pull-right">
+                            <span id="number7" data-toggle="tooltip" title="" class="badge bg-light-blue" data-original-title=""></span>
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                            </button>
+                          </div>
+                          <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body" style="display: none;">
+                          <table id="agendado7" class="table table-bordered table-striped">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Cliente</th>
+                            <th>Telefone</th>
+                            <th>Origem</th>
+                            <th>Cidade</th>
+                            <th>Usuário</th>
+                            <th>Agendado</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php  faleConoscoAgendado();   ?>    
+                        </tbody>
+                      </table>
+                        </div>
+                        <!-- /.box-body -->
+                      </div>
+                    </div>
+
                   </div>
                 </div>
               </div>
@@ -481,7 +536,7 @@ include ('modals.php');
 
     <script>
       $(function () {
-        for(var i=0;i<7;i++){
+        for(var i=0;i<8;i++){
           $('#example'+i).DataTable();
           $('#agendado'+i).DataTable();
         }

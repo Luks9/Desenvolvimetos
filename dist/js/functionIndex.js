@@ -217,7 +217,7 @@ $('#form_geral').submit(function() {
 
   $(function(){
     linhas = new Array();
-        for(var j=0;j<7;j++){
+        for(var j=0;j<8;j++){
           linhas[j] = $("#agendado"+j+" tr").length-1;
           $('#number'+j).attr('data-original-title', 'Agendamentos');
           $('#number'+j).text(linhas[j]); 
